@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
     return(
-        <div className="bg-green-200 px-2 py-5 flex flex-row justify-around fixed left-0 bottom-0 w-[100%]">
+        <div className="bg-green-200 px-2 pt-2 pb-4 flex flex-row justify-around fixed left-0 bottom-0 w-[100%]">
             <div>
-                <h1 className="font-bold text-3xl">Chat App</h1>
+                <h1 className="font-bold text-xl">Chat App</h1>
             </div>
             <div className="text-center">
-                <h1 className="text-lg font-semibold pb-3">My Other Projets</h1>
+                <h1 className="text-md font-semibold pb-3">My Other Projets</h1>
                 <div className="grid grid-cols-3 space-x-2 space-y-2">
                     <div className="bg-green-500 border-b-2 shadow-xl border-black rounded-lg p-1 space-x-5">
                         <p className="font-semibold">SM Chat App(This Project)</p>
@@ -37,7 +37,7 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-col space-y-3">
-                <h1 className="font-semibold text-lg">Contact Me</h1>
+                <h1 className="font-semibold text-md">Contact Me</h1>
                 <Link className="font-bold underline hover:text-gray-100" to="mailto:mishra23@buffalo.edu" target="_blank">Email</Link>
                 <Link className="font-bold underline hover:text-gray-100" to="https://www.linkedin.com/in/sarthakmishraa/" target="_blank">My LinkedIn</Link>
                 <Link className="font-bold underline hover:text-gray-100" to="https://github.com/sarthakmishraa" target="_blank">My GitHub</Link>
