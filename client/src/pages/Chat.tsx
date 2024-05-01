@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import * as io from 'socket.io-client';
 
-// const socket = io.connect("http://localhost:3001/");
-const socket = io.connect("https://sm-chat-app-pupl.onrender.com/");
+const socket = io.connect("http://localhost:3001/");
 
 interface chatMessagesType {
     userId: String,
