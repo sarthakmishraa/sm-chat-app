@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import * as io from 'socket.io-client';
 
-const socket = io.connect("http://localhost:3001/");
+// const BACKEND_URL = "http://localhost:3001/";
+const BACKEND_URL = "https://sm-chat-app-9pbk.onrender.com/";
+
+const socket = io.connect(BACKEND_URL);
 
 interface chatMessagesType {
     userId: String,
@@ -56,7 +59,7 @@ export const Chat = () => {
                     <>
                         <h3 className='text-2xl font-semibold py-5'>Join a Room and Chat with your friends</h3>
                         <input type='number' className='border-2 border-gray-500 rounded-lg text-xl font-semibold p-1' placeholder='Enter room code' onChange={(event) => {setRoomCode(event.target.value)}} />
-                        <button className='bg-green-200 border-2 border-gray-300 rounded-lg p-1 hover:bg-green-400' onClick={joinRoom}>Join Room</button>
+                        <button type='submit' className='bg-green-200 border-2 border-gray-300 rounded-lg p-1 hover:bg-green-400' onClick={joinRoom}>Join Room</button>
                     </>
                 )
             }

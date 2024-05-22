@@ -1,16 +1,20 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
-const cors = require("cors");
+import http from "http";
+import { Server } from "socket.io";
+import cors from "cors";
 
 const PORT = 3001;
-app.use(cors);  
+app.use(cors());
+
 const server = http.createServer(app);
+
+// const FRONTEND_URL = "http://localhost:3000";
+const FRONTEND_URL = "https://sm-chatapp.netlify.app/";
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: FRONTEND_URL,
         methods: ["GET", "POST"]
     }
 });
@@ -30,7 +34,11 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log(`User disconnected with id: ${socket.id}`);
     });
-})
+});
+
+app.get("/", (req, res) => {
+    res.send("<h2>Hello from SM Chat App Backend</h2>");
+});
 
 server.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
