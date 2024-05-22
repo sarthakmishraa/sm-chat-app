@@ -14,7 +14,7 @@ const FRONTEND_URL = "https://sm-chatapp.netlify.app/";
 
 const io = new Server(server, {
     cors: {
-        origin: FRONTEND_URL,
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
