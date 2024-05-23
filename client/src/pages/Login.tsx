@@ -9,7 +9,6 @@ export const Login = () => {
     const signInWithGoogle = async () => {
         try {
             const result = await signInWithPopup(auth, provider);
-            console.log(result);
             navigate("/generateRoom");
         }
         catch (error) {
@@ -18,9 +17,17 @@ export const Login = () => {
     }
     return(
         <div className="text-center">
-            <h1 className="text-2xl font-semibold py-5">Login Page</h1>
-            <div className="flex justify-center">
-                <button onClick={signInWithGoogle} className="flex flex-row items-center border-2 border-gray-700 p-1 rounded-3xl hover:bg-gray-200">
+            <h1
+                className="text-2xl font-semibold py-5">
+                    Login Page
+            </h1>
+            <div
+                className="flex justify-center"
+            >
+                <button
+                    onClick={signInWithGoogle}
+                    className="flex flex-row items-center border-2 border-gray-700 p-1 rounded-3xl hover:bg-gray-200"
+                >
                     <img className="w-8 mr-1" src={icon} alt="" />
                     Sign in with Google
                 </button>

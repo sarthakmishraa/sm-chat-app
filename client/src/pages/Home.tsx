@@ -12,9 +12,17 @@ export const Home = () => {
                     Hi {user?.displayName}
                 </h1>
             }
-            <h1 className="text-3xl font-bold py-5">Welcome to Chat App</h1>
-            <button className="bg-green-200 border-2 border-gray-300 rounded-lg p-1 hover:bg-green-400">
-                <Link to="/generateRoom">Make A Room/Join A Room</Link>
+            <h1
+                className="text-3xl font-bold py-5"
+            >
+                Welcome to Chat App
+            </h1>
+            <button
+                className="bg-green-200 border-2 border-gray-300 rounded-lg p-1 hover:bg-green-400"
+            >
+                <Link to="/generateRoom">
+                    Make A Room/Join A Room
+                </Link>
             </button>
         </div>
     )
