@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import * as io from 'socket.io-client';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -23,6 +23,8 @@ export const Chat = () => {
 
     const [chatMessages, setChatMessages] = useState<chatMessagesType[]>([]);
 
+    const inputMessageRef = useRef<any>(null);
+
     const userId:String = socket.id || "";
 
     const [user] = useAuthState(auth);
@@ -38,6 +40,8 @@ export const Chat = () => {
     const sendMessage = () => {
         socket.emit('send message', { message, roomCode, userId });
         setChatMessages(chatMessages => [...chatMessages, { message, roomCode, userId }]);
+        inputMessageRef.current.value= "";
+        setMessage("");
     };
 
     useEffect(() => {
@@ -92,13 +96,13 @@ export const Chat = () => {
                         }
                         <h2
                             className='text-xl font-semibold py-5'>
-                                Message: { messageRecieved }
+                                Last Message Recieved: { messageRecieved }
                         </h2>
                         <div
                             className='flex justify-center'
                         >
                             <div
-                                className='mb-2 p-1 box-border h-[480px] w-[640px] border-2 border-gray-500 rounded-xl'
+                                className='overflow-y-auto mb-2 p-1 box-border h-[480px] w-[640px] border-2 border-gray-500 rounded-xl'
                             >
                                 {
                                     chatMessages.map((chatMessage) => (
@@ -125,6 +129,7 @@ export const Chat = () => {
                             placeholder="Type a message"
                             className='w-[800px] border-2 border-gray-500 rounded-lg text-xl font-semibold p-1'
                             onChange={(event) => {setMessage(event.target.value)}}
+                            ref={inputMessageRef}
                         />
                         <button
                             className='bg-green-200 border-2 border-gray-300 rounded-lg p-1 hover:bg-green-400'
